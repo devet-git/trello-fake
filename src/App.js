@@ -1,14 +1,20 @@
 
-import './App.css';
+import './App.scss';
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <p className="hello">
-                    COTH
-                </p>
-            </header>
+        <div className='master'>
+            <nav className="navbar app">
+                navbar app
+            </nav>
+            <nav className="navbar board">
+                navbar board
+            </nav>
+            <div className='main'>
+                <header>
+                    sdaf
+                </header>
+            </div>
         </div>
     );
 }

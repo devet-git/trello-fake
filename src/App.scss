@@ -1,0 +1,25 @@
+$main-color: #58b0e4;
+
+body {
+    margin: 0;
+    line-height: 1em;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: 17px;
+}
+.master {
+    background-color: $main-color;
+    display: grid;
+    grid-template-rows: 40px 40px 1fr;
+    height: 100vh;
+    .navbar {
+        padding: 10px;
+        &.app {
+            color: rgb(255, 255, 255);
+            background-color: rgb(3, 92, 119);
+        }
+        &.board {
+            color: green;
+            background-color: $main-color;
+        }
+    }
+}
