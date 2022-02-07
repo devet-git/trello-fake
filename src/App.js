@@ -14,6 +14,13 @@ function App() {
                 <header>
                     sdaf
                 </header>
+                <ul>
+                    <li>ahaha</li>
+                    <li>hihi</li>
+                </ul>
+                <footer>
+                    add more note
+                </footer>
             </div>
         </div>
     );
