@@ -18,8 +18,13 @@ body {
             background-color: rgb(3, 92, 119);
         }
         &.board {
-            color: green;
+            color: red;
             background-color: $main-color;
         }
+    }
+    .main {
+        border: 1px solid red;
+        border-radius: 5px;
+        background-color: white;
     }
 }
