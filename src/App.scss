@@ -1,5 +1,7 @@
 $main-color: #58b0e4;
-
+$main-radius: 7px;
+$column-header-height: 35px;
+$column-footer-height: 35px;
 body {
     margin: 0;
     line-height: 1em;
@@ -22,9 +24,85 @@ body {
             background-color: $main-color;
         }
     }
-    .main {
-        border: 1px solid blue;
-        border-radius: 5px;
-        background-color: white;
+    .board-columns {
+        gap: 12px;
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        // background-color: red;
+        border-radius: $main-radius;
+        margin: 0 10px 5px;
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        &::-webkit-scrollbar:horizontal {
+            height: 12px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #ffffff8e;
+            border-radius: 10px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: #ffffffd8;
+        }
+
+        .column {
+            flex: 0 0 auto;
+            width: 300px;
+            height: calc(100% - 10px);
+            > * {
+                background-color: #f1f1f1;
+            }
+            header {
+                // background-color: rgb(238, 149, 149);
+                font-size: 20px;
+                height: $column-header-height;
+                line-height: $column-header-height;
+                padding-left: 15px;
+                border-radius: $main-radius $main-radius 0 0;
+            }
+            footer {
+                // background-color: rgb(238, 149, 149);
+                font-size: 20px;
+                height: $column-footer-height;
+                line-height: $column-footer-height;
+                padding-left: 15px;
+                border-radius: 0 0 $main-radius $main-radius;
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 5px 10px;
+                max-height: calc(100% - #{$column-header-height} - #{$column-footer-height});
+                overflow-y: auto;
+                &::-webkit-scrollbar {
+                    -webkit-appearance: none;
+                }
+                &::-webkit-scrollbar:vertical {
+                    width: 8px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: darken(#f1f1f1, 17);
+                    border-radius: 5px;
+                }
+                li {
+                    background-color: white;
+                    overflow: hidden;
+                    padding: 5px;
+                    border-radius: 5px;
+                    box-shadow: 0 0px 1px rgb(3, 3, 3);
+                    &:not(:last-child) {
+                        margin-bottom: 5px;
+                    }
+                    img {
+                        margin: -5px 0 5px -5px;
+                        width: calc(100% + 10px);
+                        display: block;
+                    }
+                }
+            }
+        }
     }
 }
