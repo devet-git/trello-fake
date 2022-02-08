@@ -1,0 +1,47 @@
+@import "_setting";
+
+$column-header-height: 35px;
+$column-footer-height: 35px;
+
+.column {
+    flex: 0 0 auto;
+    width: 300px;
+    height: calc(100% - 10px);
+    > * {
+        background-color: #f1f1f1;
+    }
+    header {
+        // background-color: rgb(238, 149, 149);
+        font-size: 20px;
+        height: $column-header-height;
+        line-height: $column-header-height;
+        padding-left: $gap;
+        border-radius: $main-radius $main-radius 0 0;
+    }
+    footer {
+        // background-color: rgb(238, 149, 149);
+        font-size: 20px;
+        height: $column-footer-height;
+        line-height: $column-footer-height;
+        padding-left: $gap;
+        border-radius: 0 0 $main-radius $main-radius;
+    }
+
+    ul.task-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 5px 10px;
+        max-height: calc(100% - #{$column-header-height} - #{$column-footer-height});
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+        &::-webkit-scrollbar:vertical {
+            width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: darken(#f1f1f1, 17);
+            border-radius: 5px;
+        }
+    }
+}
