@@ -1,13 +1,18 @@
 import "./Column.scss";
-import Task from "components/Task/Task";
-function Column() {
+import Card from "components/Card/Card";
+import sortArr from "utilities/sort";
+
+function Column(props) {
+    const { column } = props;
+    const cards = sortArr(column.cards, column.cardOrder, 'id');
+
     return (
         <div className='column'>
             <header>
-                Name
+                {column.title}
             </header>
-            <ul className="task-list">
-                <Task />
+            <ul className="card-list">
+                {cards.map((card, index) => <Card key={index} card={card} />)}
             </ul>
             <footer>
                 Add a card
