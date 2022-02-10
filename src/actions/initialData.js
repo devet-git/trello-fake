@@ -64,7 +64,7 @@ export const initalData = {
                      id: 'card-9', boardId: 'board-1', columnId: 'column-3',
                      title: 'Card\'s title 9',
                      cover: null
-                  },
+                  }
                ]
             }
          ]

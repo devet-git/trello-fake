@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import './BoardBar.scss';
 
 function BoardBar() {

@@ -1,17 +1,20 @@
 @import "_setting";
 
-li.card-item {
-    background-color: white;
-    overflow: hidden;
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: 0 1px 1px #acacac;
-    &:not(:last-child) {
-        margin-bottom: 5px;
-    }
-    img {
-        margin: -5px 0 5px -5px;
-        width: calc(100% + 10px);
-        display: block;
-    }
+.card-item {
+   background-color: white;
+   overflow: hidden;
+   padding: 10px 5px;
+   border-radius: 5px;
+   box-shadow: 0 1px 1px #acacac;
+   margin-bottom: 5px;
+   cursor: move;
+   &:hover {
+      box-shadow: 0 1px 1px #9ac8fb;
+   }
+   img {
+      margin: -10px 0 10px -5px;
+      width: calc(100% + 10px);
+      display: block;
+      -webkit-user-drag: none;
+   }
 }
