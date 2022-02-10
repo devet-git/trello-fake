@@ -1,7 +1,8 @@
 @import "_setting";
 
 .navbar-board {
-    padding: 10px;
-    color: red;
-    background-color: $main-color;
+   // padding: 10px;
+   color: red;
+   background-color: $main-color;
+   height: $navbar-board-height;
 }

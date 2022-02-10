@@ -1,7 +1,8 @@
 @import "_setting";
 
 .navbar-app {
-    padding: 10px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(3, 92, 119);
+   // padding: 10px;
+   color: rgb(255, 255, 255);
+   background-color: rgb(3, 92, 119);
+   height: $navbar-app-height;
 }

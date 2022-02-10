@@ -1,24 +1,28 @@
 @import "_setting";
 
 .board-contents {
-    gap: 15px;
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    border-radius: $main-radius;
-    margin: 0 10px 5px;
-    &::-webkit-scrollbar {
-        -webkit-appearance: none;
-    }
+   height: $board-content-height;
+   overflow-y: hidden;
+   overflow-x: auto;
+   border-radius: $main-radius;
+   margin: 0 10px;
+   &::-webkit-scrollbar {
+      -webkit-appearance: none;
+   }
 
-    &::-webkit-scrollbar:horizontal {
-        height: 12px;
-    }
-    &::-webkit-scrollbar-thumb {
-        background-color: #ffffff8e;
-        border-radius: 10px;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-        background-color: #ffffffd8;
-    }
+   &::-webkit-scrollbar:horizontal {
+      height: 12px;
+   }
+   &::-webkit-scrollbar-thumb {
+      background-color: #ffffff8e;
+      border-radius: 10px;
+   }
+   &::-webkit-scrollbar-thumb:hover {
+      background-color: #ffffffd8;
+   }
+   .column-drop-preview {
+      background-color: #9a9ae65e;
+      border: 1px dashed #abc;
+      // margin: 5px 45px 5px 5px;
+   }
 }

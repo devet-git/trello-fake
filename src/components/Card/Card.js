@@ -1,12 +1,13 @@
+/* eslint-disable react/react-in-jsx-scope */
 import './Card.scss';
 
 function Card(props) {
    const { card } = props;
    return (
-      <li className="card-item">
-         {card.cover && <img src={card.cover} alt="ihi" />}
+      <div className="card-item">
+         {card.cover && <img src={card.cover} alt="ihi" onMouseDown={e => e.preventDefault()} />}
          {card.title}
-      </li>
+      </div>
    );
 }
 export default Card;
