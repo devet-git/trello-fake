@@ -6,15 +6,18 @@
    padding: 10px 5px;
    border-radius: 5px;
    box-shadow: 0 1px 1px #acacac;
-   margin-bottom: 5px;
+   margin-bottom: 7px;
    cursor: move;
+   transition: 0.25s;
    &:hover {
-      box-shadow: 0 1px 1px #9ac8fb;
+      // box-shadow: 0 1px 1px #9ac8fb;
+      background-color: #d8d8d8;
    }
    img {
       margin: -10px 0 10px -5px;
       width: calc(100% + 10px);
       display: block;
+      user-select: none;
       -webkit-user-drag: none;
    }
 }
