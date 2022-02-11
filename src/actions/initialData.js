@@ -2,15 +2,15 @@ export const initalData = {
    boards: [
       {
          id: 'board-1',
-         columnOrder: ['column-2', 'column-3', 'column-1'],
+         columnOrder: ['column-1', 'column-2', 'column-3', 'column-4'],
          columns: [
             {
                id: 'column-1', boardId: 'board-1', title: 'TO DO COLUMN',
-               cardOrder: ['card-2', 'card-1', 'card-3', 'card-4'],
+               cardOrder: ['card-1', 'card-2', 'card-3', 'card-4'],
                cards: [
                   {
                      id: 'card-1', boardId: 'board-1', columnId: 'column-1',
-                     title: 'Card\'s title 1',
+                     title: 'The forest in Australia',
                      cover: 'https://natureconservancy-h.assetsadobe.com/is/image/content/dam/tnc/nature/en/photos/WOPA160517_D056-resized.jpg?crop=864,0,1728,2304&wid=600&hei=800&scl=2.88'
                   },
                   {
@@ -63,6 +63,27 @@ export const initalData = {
                   {
                      id: 'card-9', boardId: 'board-1', columnId: 'column-3',
                      title: 'Card\'s title 9',
+                     cover: null
+                  }
+               ]
+            },
+            {
+               id: 'column-4', boardId: 'board-1', title: 'OEOEE',
+               cardOrder: ['card-10', 'card-11', 'card-12'],
+               cards: [
+                  {
+                     id: 'card-10', boardId: 'board-1', columnId: 'column-4',
+                     title: 'Card\'s title 10',
+                     cover: null
+                  },
+                  {
+                     id: 'card-11', boardId: 'board-1', columnId: 'column-4',
+                     title: 'Card\'s title 11',
+                     cover: null
+                  },
+                  {
+                     id: 'card-12', boardId: 'board-1', columnId: 'column-4',
+                     title: 'Card\'s title 12',
                      cover: null
                   }
                ]

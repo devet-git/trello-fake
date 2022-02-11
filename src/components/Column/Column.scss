@@ -1,7 +1,7 @@
 @import "_setting";
 
 $column-header-height: 35px;
-$column-footer-height: 35px;
+$column-footer-height: 40px;
 
 .column {
    height: calc(#{$board-content-height} - #{$gap} * 2);
@@ -19,11 +19,26 @@ $column-footer-height: 35px;
       cursor: move;
    }
    footer {
+      display: flex;
+      align-items: center;
       font-size: 20px;
       height: $column-footer-height;
-      line-height: $column-footer-height;
+      // line-height: $column-footer-height;
       padding-left: $gap;
       border-radius: 0 0 $main-radius $main-radius;
+      color: #888;
+      .footer-actions {
+         width: 100%;
+         user-select: none;
+         border-radius: 5px;
+         cursor: pointer;
+         padding: 5px $gap;
+         margin-right: 10px;
+         &:hover {
+            color: black;
+            background-color: #e0e0e0;
+         }
+      }
    }
 
    .card-list {
@@ -43,7 +58,8 @@ $column-footer-height: 35px;
       }
       .card-ghost {
          transition: transform 0.18s ease;
-         transform: rotateZ(5deg);
+         transform: rotateZ(7deg);
+         font-weight: bold;
       }
       .card-ghost-drop {
          transition: transform 0.18s ease-in-out;
@@ -52,6 +68,7 @@ $column-footer-height: 35px;
       .card-drop-preview {
          background-color: rgba(150, 150, 200, 0.1);
          border: 1px dashed #abc;
+         border-radius: 5px;
          margin: 5px;
       }
    }
