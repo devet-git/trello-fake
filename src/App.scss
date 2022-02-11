@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap";
 @import "_setting";
 
 body {
@@ -13,5 +14,9 @@ body {
    .icon {
       font-size: 17px;
       margin-right: 10px;
+   }
+   .mybtn {
+      border-radius: 5px;
+      border: none;
    }
 }

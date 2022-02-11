@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { isEmpty } from 'lodash';
 import './BoardContent.scss';
 import Column from 'components/Column/Column';
@@ -8,10 +8,38 @@ import sortArr from 'utilities/sort';
 import { Container, Draggable } from 'react-smooth-dnd';
 import { applyDrag } from 'utilities/dragDrop';
 
-
 function BoardContent() {
    const [board, setBoard] = useState({});
    const [columns, setColumns] = useState([]);
+   const [addColumnState, setAddColumnState] = useState(false);
+   const [newColumnTitle, setNewColumnTitle] = useState('');
+   const newColumnInpRef = useRef(null);
+
+   // TODO: LifeCycle
+   useEffect(() => {
+      const boardFromDb = initalData.boards.find(board => board.id === 'board-1');
+      if (boardFromDb) {
+         setBoard(boardFromDb);
+         setColumns(sortArr(boardFromDb.columns, boardFromDb.columnOrder, 'id'));
+      }
+   }, []);
+   useEffect(() => {
+      if (newColumnInpRef && newColumnInpRef.current) {
+         newColumnInpRef.current.focus();
+         newColumnInpRef.current.select();
+      }
+   }, [addColumnState]);
+
+   // TODO: NOT FOUND VIEW
+   if (isEmpty(board)) {
+      return (
+         <div className='not-found' style={{ 'color': 'red' }}>
+            Board not found
+         </div>
+      );
+   }
+
+   // TODO: FUNCTIONS
    const onColumnDrop = (dropResult) => {
       // console.log(dropResult);
       let newColumn = [...columns];
@@ -32,28 +60,40 @@ function BoardContent() {
          // console.log(currentColumn);
          // console.log(newColumns);
          setColumns(newColumns);
-
       }
    }
-
-   useEffect(() => {
-      // TODO: get data from DB
-      const boardFromDb = initalData.boards.find(board => board.id === 'board-1');
-      if (boardFromDb) {
-         setBoard(boardFromDb);
-         // TODO: set column after sort
-         setColumns(sortArr(boardFromDb.columns, boardFromDb.columnOrder, 'id'));
+   /**
+   * Set state to toggle 'Add column workspace'
+   */
+   const toggleAddColumn = () => {
+      setAddColumnState(!addColumnState);
+   }
+   const addColumn = () => {
+      if (!newColumnTitle) {
+         newColumnInpRef.current.focus();
+      } else {
+         let newColumns = [...columns];
+         let newBoard = { ...board };
+         const newColumnToAdd = {
+            id: Math.random().toString(36).substring(2, 5),
+            boardId: board.id,
+            title: newColumnTitle.trim(),
+            cardOrder: [],
+            cards: []
+         }
+         newColumns.push(newColumnToAdd);
+         newBoard.columnOrder = newColumns.map(column => column.id);
+         newBoard.columns = newColumns;
+         setColumns(newColumns);
+         setBoard(newBoard);
+         setNewColumnTitle('');
+         setAddColumnState(false);
       }
-   }, []);
 
-   if (isEmpty(board)) {
-      return (
-         <div className='not-found' style={{ 'color': 'red' }}>
-            Board not found
-         </div>
-      );
    }
 
+
+   // TODO: RENDER
    return (
       <section className='board-contents'>
          <Container
@@ -73,8 +113,28 @@ function BoardContent() {
                </Draggable>
             ))}
          </Container>
-         <section className="add-column">
-            <i className='fa fa-plus icon' />Add a column
+         <section className='add-column'>
+            {!addColumnState &&
+               <div className="add-column-btn" onClick={toggleAddColumn}>
+                  <i className='fa fa-plus icon' />Add a column
+               </div>
+            }
+            {addColumnState &&
+               <div className='add-column-main'>
+                  <input
+                     type="text"
+                     name='columnTitle'
+                     className='inp-column-title'
+                     placeholder="Enter list title"
+                     ref={newColumnInpRef}
+                     value={newColumnTitle}
+                     onInput={e => setNewColumnTitle(e.target.value)}
+                     onKeyDown={e => (e.key === 'Enter') && addColumn()}
+                  />
+                  <button className='mybtn apply-column-title' onClick={addColumn}>Add column</button>
+                  <button className='mybtn close' onClick={toggleAddColumn}><i className='fa fa-close' /></button>
+               </div>
+            }
          </section>
       </section>
    );

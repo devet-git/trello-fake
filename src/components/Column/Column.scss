@@ -8,7 +8,7 @@ $column-footer-height: 40px;
    margin-right: 10px;
    width: 280px;
    > * {
-      background-color: #f1f1f1;
+      background-color: $column-bg-color;
    }
    header.column-drag-handle {
       font-size: 20px;
