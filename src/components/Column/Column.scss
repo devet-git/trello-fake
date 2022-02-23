@@ -16,7 +16,37 @@ $column-footer-height: 40px;
       line-height: $column-header-height;
       padding-left: $gap;
       border-radius: $main-radius $main-radius 0 0;
-      cursor: move;
+      cursor: grab;
+      display: flex;
+      .column-title {
+         flex: 90%;
+         height: inherit;
+         overflow: hidden;
+         padding: 0 1px;
+      }
+      .column-dropdown-actions {
+         flex: 10%;
+         .dropdown-btn {
+            background-color: transparent;
+            color: gray;
+            border: none;
+            // padding: 0px 0px;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            &:after {
+               content: "...";
+               border: none;
+            }
+         }
+         .dropdown-menu {
+            overflow: hidden;
+            padding: 0;
+            .dropdown-item {
+               padding: 0 1rem;
+            }
+         }
+      }
    }
    footer {
       display: flex;
