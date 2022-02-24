@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState, useEffect, useRef } from 'react';
+import { Container, Draggable } from 'react-smooth-dnd';
 import { isEmpty } from 'lodash';
 import './BoardContent.scss';
 import Column from 'components/Column/Column';
 import { initalData } from 'actions/initialData';
 import sortArr from 'utilities/sort';
-import { Container, Draggable } from 'react-smooth-dnd';
 import { applyDrag } from 'utilities/dragDrop';
 
 function BoardContent() {
@@ -87,12 +87,20 @@ function BoardContent() {
          setColumns(newColumns);
          setBoard(newBoard);
          setNewColumnTitle('');
-         setAddColumnState(false);
+         // setAddColumnState(false);
       }
-
    }
-
-
+   const onUpdateColumn = (columnToUpdate) => {
+      const { id } = columnToUpdate;
+      let newColumns = [...columns];
+      let newBoard = { ...board };
+      const columnIndexToUpdate = newColumns.findIndex(i => i.id === id);
+      columnToUpdate._detroy ? newColumns.splice(columnIndexToUpdate, 1) : newColumns.splice(columnIndexToUpdate, 1, columnToUpdate)
+      newBoard.columnOrder = newColumns.map(column => column.id);
+      newBoard.columns = newColumns;
+      setColumns(newColumns);
+      setBoard(newBoard);
+   }
    // TODO: RENDER
    return (
       <section className='board-contents'>
@@ -109,7 +117,7 @@ function BoardContent() {
          >
             {columns.map((column, index) => (
                <Draggable key={index}>
-                  <Column column={column} onCardDrop={onCardDrop} />
+                  <Column column={column} onCardDrop={onCardDrop} onUpdateColumn={onUpdateColumn} />
                </Draggable>
             ))}
          </Container>
